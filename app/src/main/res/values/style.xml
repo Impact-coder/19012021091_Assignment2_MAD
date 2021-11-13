@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="YourCardView" parent="Widget.MaterialComponents.CardView">
+        <item name="backgroundColor">@color/black</item>
+        <item name="cardCornerRadius">15dp</item>
+    </style>
+</resources>

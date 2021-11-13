@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/5th Sem/MAD_LAB/19012021091_Assignment2_MAD/app/src/main/res/drawable/btn_gradient.xml" value="0.16623931623931623" />
+        <entry key="..\:/5th Sem/MAD_LAB/19012021091_Assignment2_MAD/app/src/main/res/drawable/cardview_style.xml" value="0.16623931623931623" />
+        <entry key="..\:/5th Sem/MAD_LAB/19012021091_Assignment2_MAD/app/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.16623931623931623" />
+        <entry key="..\:/5th Sem/MAD_LAB/19012021091_Assignment2_MAD/app/src/main/res/drawable/ic_baseline_business_24.xml" value="0.16623931623931623" />
+        <entry key="..\:/5th Sem/MAD_LAB/19012021091_Assignment2_MAD/app/src/main/res/drawable/ic_baseline_currency_rupee_24.xml" value="0.16623931623931623" />
+        <entry key="..\:/5th Sem/MAD_LAB/19012021091_Assignment2_MAD/app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.16623931623931623" />
+        <entry key="..\:/5th Sem/MAD_LAB/19012021091_Assignment2_MAD/app/src/main/res/drawable/ic_baseline_phone_iphone_24.xml" value="0.16623931623931623" />
+        <entry key="..\:/5th Sem/MAD_LAB/19012021091_Assignment2_MAD/app/src/main/res/drawable/ic_baseline_quentity_24.xml" value="0.16623931623931623" />
+        <entry key="..\:/5th Sem/MAD_LAB/19012021091_Assignment2_MAD/app/src/main/res/drawable/ic_baseline_record_view_24.xml" value="0.16623931623931623" />
+        <entry key="..\:/5th Sem/MAD_LAB/19012021091_Assignment2_MAD/app/src/main/res/drawable/ic_item_24.xml" value="0.16623931623931623" />
+        <entry key="..\:/5th Sem/MAD_LAB/19012021091_Assignment2_MAD/app/src/main/res/drawable/ic_outline_circle_24.xml" value="0.16623931623931623" />
+        <entry key="..\:/5th Sem/MAD_LAB/19012021091_Assignment2_MAD/app/src/main/res/drawable/ic_outline_invoice_24.xml" value="0.16623931623931623" />
+        <entry key="..\:/5th Sem/MAD_LAB/19012021091_Assignment2_MAD/app/src/main/res/drawable/profile_gradient.xml" value="0.16623931623931623" />
+        <entry key="..\:/5th Sem/MAD_LAB/19012021091_Assignment2_MAD/app/src/main/res/drawable/waveform.xml" value="0.16623931623931623" />
+        <entry key="..\:/5th Sem/MAD_LAB/19012021091_Assignment2_MAD/app/src/main/res/layout/bill_deatils.xml" value="0.15" />
+        <entry key="..\:/5th Sem/MAD_LAB/19012021091_Assignment2_MAD/app/src/main/res/layout/customer_details_dialog.xml" value="0.152991452991453" />
+        <entry key="..\:/5th Sem/MAD_LAB/19012021091_Assignment2_MAD/app/src/main/res/layout/dashboard.xml" value="0.14145299145299145" />
+        <entry key="..\:/5th Sem/MAD_LAB/19012021091_Assignment2_MAD/app/src/main/res/layout/dropdown_taxitem.xml" value="0.152991452991453" />
+        <entry key="..\:/5th Sem/MAD_LAB/19012021091_Assignment2_MAD/app/src/main/res/layout/invoice_create.xml" value="0.1" />
+        <entry key="..\:/5th Sem/MAD_LAB/19012021091_Assignment2_MAD/app/src/main/res/layout/login.xml" value="0.17239583333333333" />
+        <entry key="..\:/5th Sem/MAD_LAB/19012021091_Assignment2_MAD/app/src/main/res/layout/records_database.xml" value="0.152991452991453" />
+        <entry key="..\:/5th Sem/MAD_LAB/19012021091_Assignment2_MAD/app/src/main/res/layout/signup.xml" value="0.14145299145299145" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

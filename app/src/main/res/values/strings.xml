@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">19012021091_Assignment2_MAD</string>
+    <string-array name="tax_percentage">
+        <item>5%</item>
+        <item>12%</item>
+        <item>18%</item>
+        <item>28%</item>
+    </string-array>
+</resources>
