@@ -9,7 +9,10 @@ import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
 import androidx.core.content.ContentProviderCompat.requireContext
 import com.google.android.material.textfield.TextInputEditText
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -18,6 +21,7 @@ import kotlinx.coroutines.tasks.await
 class BillDeatils : AppCompatActivity() {
 
     private val bills = FirebaseFirestore.getInstance().collection("bills")
+    private val users = FirebaseFirestore.getInstance().collection("users")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -87,6 +91,7 @@ class BillDeatils : AppCompatActivity() {
                 val id = bills.document().id
                 val bill = BillData(
                     uid = id,
+                    owner = Firebase.auth.currentUser!!.uid,
                     itemNames = itemNames,
                     sellingPrices = sellingPrices,
                     quantities = quantities,
@@ -98,10 +103,26 @@ class BillDeatils : AppCompatActivity() {
 
                 CoroutineScope(Dispatchers.Main).launch {
                     bills.document(id).set(bill).await()
+                    users.document(Firebase.auth.currentUser!!.uid)
+                        .update("records", FieldValue.arrayUnion(id))
                 }
 
 
+                val rates = FloatArray(sellingPrices.size)
+                for ((i, f) in sellingPrices.withIndex()) {
+                    rates[i] = f
+                }
+
+                val tax1 = FloatArray(taxes.size)
+                for ((i, t) in taxes.withIndex()) {
+                    tax1[i] = t
+                }
+
                 Intent(this, InvoiceCreate::class.java).apply {
+                    putExtra("items", itemNames)
+                    putExtra("quantities", quantities)
+                    putExtra("rates", rates)
+                    putExtra("taxes", tax1)
                     startActivity(this)
                 }
             }

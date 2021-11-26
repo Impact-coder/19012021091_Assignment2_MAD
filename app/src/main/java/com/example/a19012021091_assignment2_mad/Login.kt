@@ -23,20 +23,11 @@ import kotlinx.coroutines.withContext
 
 class Login : AppCompatActivity() {
 
-    lateinit var pref: SharedPreferences
-
     private val auth = FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.login)
-
-        if (Firebase.auth.currentUser != null) {
-            Intent(applicationContext, Dashboard::class.java).apply {
-                startActivity(this)
-                finish()
-            }
-        }
 
         setStatusBarTransparent()
         supportActionBar?.hide()

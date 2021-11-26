@@ -21,7 +21,6 @@ import kotlinx.coroutines.tasks.await
 
 class Signup : AppCompatActivity() {
 
-    lateinit var pref: SharedPreferences
     private val auth = FirebaseAuth.getInstance()
     private val users = FirebaseFirestore.getInstance().collection("users")
 

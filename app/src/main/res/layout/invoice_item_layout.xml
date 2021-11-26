@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
-    <com.google.android.material.card.MaterialCardView
+    <androidx.cardview.widget.CardView
         android:id="@+id/item_cardview1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,101 +19,101 @@
             android:id="@+id/sublinear1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:orientation="horizontal"
-            >
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
+                android:id="@+id/tv_sr_no"
                 android:layout_width="25dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
                 android:text="1"
                 android:textAllCaps="false"
-                android:textSize="16sp"
                 android:textColor="@color/black"
-                />
+                android:textSize="16sp" />
+
             <TextView
+                android:id="@+id/tv_item_name"
                 android:layout_width="70sp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Jeansfx"
                 android:textAllCaps="false"
-                android:textSize="16sp"
                 android:textColor="@color/black"
-                />
+                android:textSize="16sp" />
 
 
             <TextView
+                android:id="@+id/tv_quantity"
                 android:layout_width="30sp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
                 android:text="2"
                 android:textAllCaps="false"
-                android:textSize="16sp"
                 android:textColor="@color/black"
-                />
+                android:textSize="16sp" />
+
             <TextView
+                android:id="@+id/tv_rate"
                 android:layout_width="50sp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
                 android:text="995.52"
                 android:textAllCaps="false"
-                android:textSize="16sp"
                 android:textColor="@color/black"
-                />
+                android:textSize="16sp" />
+
             <TextView
+                android:id="@+id/tv_tax"
                 android:layout_width="30sp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
                 android:text="5%"
                 android:textAllCaps="false"
-                android:textSize="16sp"
                 android:textColor="@color/black"
-                />
+                android:textSize="16sp" />
+
             <TextView
+                android:id="@+id/tv_tax_amount"
                 android:layout_width="50sp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="13dp"
+                android:layout_marginTop="10dp"
                 android:text="147.52"
                 android:textAllCaps="false"
-                android:textSize="16sp"
                 android:textColor="@color/black"
-                />
+                android:textSize="16sp" />
+
             <TextView
+                android:id="@+id/tv_total"
                 android:layout_width="60sp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="13dp"
+                android:layout_marginTop="10dp"
                 android:text="3100.00"
                 android:textAllCaps="false"
-                android:textSize="16sp"
                 android:textColor="@color/black"
-                />
+                android:textSize="16sp" />
         </LinearLayout>
 
 
-
-
-
-    </com.google.android.material.card.MaterialCardView>
+    </androidx.cardview.widget.CardView>
 
     <View
         android:id="@+id/divider1"
         android:layout_width="380dp"
-        android:padding="15dp"
         android:layout_height="1dp"
         android:layout_marginTop="10sp"
         android:background="@color/black"
+        android:padding="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/item_cardview1"
-        />
+        app:layout_constraintTop_toBottomOf="@id/item_cardview1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
