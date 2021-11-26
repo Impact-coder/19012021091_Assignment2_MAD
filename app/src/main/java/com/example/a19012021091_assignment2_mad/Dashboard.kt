@@ -14,10 +14,20 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
 import com.google.android.material.textfield.TextInputEditText
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 
 class Dashboard : AppCompatActivity() {
 
     lateinit var pref: SharedPreferences
+
+    private val users = FirebaseFirestore.getInstance().collection("users")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.dashboard)
@@ -31,16 +41,24 @@ class Dashboard : AppCompatActivity() {
         val view_records = findViewById<AppCompatButton>(R.id.viewrecord)
         val create_invoice = findViewById<AppCompatButton>(R.id.create_invoice)
 
-        pref = getSharedPreferences("LoginInfo", Context.MODE_PRIVATE)
+        CoroutineScope(Dispatchers.Main).launch {
+            val user = users.document(Firebase.auth.currentUser!!.uid).get().await()
+                .toObject(User::class.java)!!
 
-        var title = pref.getString("business_name",null)
-        val tempadd=pref.getString("address",null)
+            business_title.text = user.businessName
+            business_add.text = user.businessAddress
 
-        business_title.setText(title).toString()
-        business_add.setText(tempadd).toString()
+        }
+
+
+//        pref = getSharedPreferences("LoginInfo", Context.MODE_PRIVATE)
+
+//        var title = pref.getString("business_name", null)
+//        val tempadd = pref.getString("address", null)
+
 
         view_records.setOnClickListener {
-            Intent(this,RecordsDatabase::class.java).apply {
+            Intent(this, RecordsDatabase::class.java).apply {
                 startActivity(this)
             }
         }
@@ -56,18 +74,19 @@ class Dashboard : AppCompatActivity() {
             val next_btn = dialog.findViewById<AppCompatButton>(R.id.next_btn)
 
             next_btn.setOnClickListener {
-                if (customer_name.text.toString().isEmpty() or customer_phone.text.toString().isEmpty())
-                {
+                if (customer_name.text.toString().isEmpty() or customer_phone.text.toString()
+                        .isEmpty()
+                ) {
                     Toast.makeText(
                         this,
                         "Please enter all fields\nAll fields are required",
                         Toast.LENGTH_SHORT
                     ).show()
 
-                }
-                else
-                {
-                    Intent(this,BillDeatils::class.java).apply {
+                } else {
+                    Intent(this, BillDeatils::class.java).apply {
+                        putExtra("name", customer_name.text.toString())
+                        putExtra("phone", customer_phone.text.toString())
                         startActivity(this)
                     }
 
@@ -78,8 +97,6 @@ class Dashboard : AppCompatActivity() {
 
 
         }
-
-
 
 
     }

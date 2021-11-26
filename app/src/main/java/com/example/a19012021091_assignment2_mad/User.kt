@@ -5,5 +5,6 @@ data class User(
     val businessName: String = "",
     val email: String = "",
     val businessAddress: String = "",
-    val contactNumber: String = ""
+    val contactNumber: String = "",
+    val records: ArrayList<String> = arrayListOf()
 )
