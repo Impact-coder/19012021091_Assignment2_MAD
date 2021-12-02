@@ -1,5 +1,6 @@
 package com.example.a19012021091_assignment2_mad
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ListView
@@ -31,7 +32,25 @@ class RecordsDatabase : AppCompatActivity() {
             lvRecords.adapter = adapter
 
             lvRecords.setOnItemClickListener { adapterView, view, i, l ->
+                val item = adapter.getItem(position = i) as BillData
 
+                val rates = FloatArray(item.sellingPrices.size)
+                for ((j, f) in item.sellingPrices.withIndex()) {
+                    rates[j] = f
+                }
+
+                val tax1 = FloatArray(item.taxes.size)
+                for ((j, t) in item.taxes.withIndex()) {
+                    tax1[j] = t
+                }
+
+                Intent(applicationContext, InvoiceCreate::class.java).apply {
+                    putExtra("items", item.itemNames)
+                    putExtra("quantities", item.quantities)
+                    putExtra("rates", rates)
+                    putExtra("taxes", tax1)
+                    startActivity(this)
+                }
             }
         }
 

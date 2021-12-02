@@ -31,11 +31,12 @@ class RecordsAdapter(var context: Context, var recordsList: ArrayList<BillData>)
         val customerName = view.findViewById<TextView>(R.id.tv_name)
         val customerNumber = view.findViewById<TextView>(R.id.tv_number)
         val billTotal = view.findViewById<TextView>(R.id.tv_bill_total)
+        val timeFormat = view.findViewById<TextView>(R.id.tv_date)
 
         customerName.text = recordsList[position].customerName
         customerNumber.text = recordsList[position].customerPhone
         billTotal.text = recordsList[position].totalPrice.toString()
-
+        timeFormat.text = recordsList[position].date
 
 
         return view

@@ -8,6 +8,7 @@ data class BillData(
     val quantities: ArrayList<Int> = arrayListOf(),
     val taxes: ArrayList<Float> = arrayListOf(),
     val totalPrice: Float = 0f,
+    val date: String = "",
     val customerName: String = "",
     val customerPhone: String = ""
 )

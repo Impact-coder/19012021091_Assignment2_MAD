@@ -7,7 +7,6 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatButton
-import androidx.core.content.ContentProviderCompat.requireContext
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FieldValue
@@ -17,6 +16,9 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 class BillDeatils : AppCompatActivity() {
 
@@ -88,6 +90,9 @@ class BillDeatils : AppCompatActivity() {
                 ).show()
             } else {
 
+                val timeFormat = SimpleDateFormat("MMM, dd yyyy hh:mm:ss a", Locale.ENGLISH)
+                val timeStamp = timeFormat.format(System.currentTimeMillis())
+
                 val id = bills.document().id
                 val bill = BillData(
                     uid = id,
@@ -97,6 +102,7 @@ class BillDeatils : AppCompatActivity() {
                     quantities = quantities,
                     taxes = taxes,
                     totalPrice = total,
+                    date = timeStamp,
                     customerName = customerName,
                     customerPhone = customerPhone
                 )
