@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="10dp"
-
+        android:elevation="-10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -28,7 +28,7 @@
                 android:id="@+id/tv_sr_no"
                 android:layout_width="25dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
+                android:layout_marginLeft="12dp"
                 android:layout_marginTop="10dp"
                 android:text="1"
                 android:textAllCaps="false"
@@ -48,7 +48,7 @@
 
             <TextView
                 android:id="@+id/tv_quantity"
-                android:layout_width="30sp"
+                android:layout_width="20sp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
@@ -70,7 +70,7 @@
 
             <TextView
                 android:id="@+id/tv_tax"
-                android:layout_width="30sp"
+                android:layout_width="45sp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
@@ -83,7 +83,7 @@
                 android:id="@+id/tv_tax_amount"
                 android:layout_width="50sp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="13dp"
+                android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:text="147.52"
                 android:textAllCaps="false"
@@ -94,7 +94,7 @@
                 android:id="@+id/tv_total"
                 android:layout_width="60sp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="13dp"
+                android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:text="3100.00"
                 android:textAllCaps="false"

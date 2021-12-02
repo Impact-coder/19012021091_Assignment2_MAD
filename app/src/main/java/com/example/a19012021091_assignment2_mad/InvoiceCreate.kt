@@ -1,9 +1,13 @@
 package com.example.a19012021091_assignment2_mad
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.ListView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.appbar.MaterialToolbar
 import kotlin.math.sign
@@ -40,7 +44,7 @@ class InvoiceCreate : AppCompatActivity() {
 
         var amount = 0f
         var tax = 0f
-        for (i in 0 until rates.size){
+        for (i in 0 until rates.size) {
             amount += rates[i] * quantities[i]
             val t1 = rates[i] / 100 * taxes[i]
             tax += rates[i] + t1
@@ -50,5 +54,36 @@ class InvoiceCreate : AppCompatActivity() {
         taxAmount.text = tax.toString()
         total.text = "${amount + tax}"
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        menuInflater.inflate(R.menu.top_app_bar, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.additem_menu -> {
+                Intent(this, BillDeatils::class.java).apply {
+                    startActivity(this)
+                }
+                true
+            }
+            R.id.save_as_pdf_menu -> {
+                Toast.makeText(applicationContext, "Saved as pdf", Toast.LENGTH_LONG).show()
+                return true
+            }
+            R.id.send_to_cuatomer_menu -> {
+                Toast.makeText(applicationContext, "Send to Customer", Toast.LENGTH_LONG).show()
+                return true
+            }
+            else -> {
+                Intent(this, Dashboard::class.java).apply {
+                    startActivity(this)
+                }
+                true
+            }
+        }
     }
 }

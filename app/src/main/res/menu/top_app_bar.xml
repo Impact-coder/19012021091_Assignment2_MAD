@@ -15,8 +15,8 @@
         android:title="Send to Customer" />
 
     <item
-        android:id="@+id/goto_history_menu"
-        android:title="Go to History" />
+        android:id="@+id/goto_dashboard_menu"
+        android:title="Go to DashBoard" />
 
 
 </menu>
