@@ -57,6 +57,7 @@ class RecordsDatabase : AppCompatActivity() {
                     putExtra("quantities", item.quantities)
                     putExtra("rates", rates)
                     putExtra("taxes", tax1)
+                    putExtra("cst_num",item.customerPhone)
                     startActivity(this)
                 }
             }
@@ -76,6 +77,8 @@ class RecordsDatabase : AppCompatActivity() {
                 if (customer_name.text.toString().isEmpty() or customer_phone.text.toString()
                         .isEmpty()
                 ) {
+
+
                     Toast.makeText(
                         this,
                         "Please enter all fields\nAll fields are required",

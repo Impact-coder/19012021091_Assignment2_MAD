@@ -129,6 +129,7 @@ class BillDeatils : AppCompatActivity() {
                     putExtra("quantities", quantities)
                     putExtra("rates", rates)
                     putExtra("taxes", tax1)
+                    putExtra("cst_num",customerPhone)
                     startActivity(this)
                 }
             }

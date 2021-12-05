@@ -50,14 +50,15 @@ class InvoiceAdapter(
         quantity.text = quantities[position].toString()
         tax.text = "${taxes[position]}%"
 
-        val r = rates[position] * quantities[position]
+        val r = rates[position]
 
         rate.text = r.toString()
+        val r1 = r * quantities[position]
 
-        val t1 = r / 100 * taxes[position]
+        val t1 = r1 / 100 * taxes[position]
 
         taxAmount.text = t1.toString()
-        total.text = "${r + t1}"
+        total.text = "${ r1 + t1 }"
 
         return view
     }
