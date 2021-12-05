@@ -21,12 +21,14 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/btn_gradient"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
             android:orientation="horizontal">
 
             <LinearLayout
                 android:id="@+id/sublinear2"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
+                android:layout_width="180dp"
+                android:layout_height="match_parent"
                 android:layout_marginLeft="30dp"
                 android:orientation="vertical"
                 android:paddingLeft="15dp">
@@ -38,7 +40,7 @@
                     android:layout_marginTop="10dp"
                     android:text="Rakesh Dave"
                     android:textColor="#12143b"
-                    android:textSize="22sp"
+                    android:textSize="24sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -48,31 +50,38 @@
                     android:layout_marginTop="5dp"
                     android:text="+91 1234567890"
                     android:textColor="#12143b"
-                    android:textSize="14sp" />
+                    android:textSize="16sp" />
 
-                <TextView
-                    android:id="@+id/tv_date"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:paddingBottom="10dp"
-                    android:text="Date"
-                    android:textColor="#12143b"
-                    android:textSize="14sp" />
+
 
             </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/sublinear3"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+
+            android:orientation="vertical"
+            android:paddingLeft="15dp">
 
             <TextView
                 android:id="@+id/tv_bill_total"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="-65dp"
-                android:paddingLeft="10dp"
-                android:paddingTop="24dp"
+                android:layout_marginTop="10dp"
                 android:text="38000.62"
                 android:textColor="@color/white"
-                android:textSize="18sp" />
-
+                android:textSize="20sp" />
+            <TextView
+                android:id="@+id/tv_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:paddingBottom="10dp"
+                android:text="Date"
+                android:textColor="#12143b"
+                android:textSize="16sp" />
+        </LinearLayout>
 
         </LinearLayout>
 

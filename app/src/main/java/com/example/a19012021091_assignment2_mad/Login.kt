@@ -59,7 +59,7 @@ class Login : AppCompatActivity() {
                         ).await()
 
                         withContext(Dispatchers.Main) {
-                            Intent(applicationContext, Dashboard::class.java).apply {
+                            Intent(applicationContext, RecordsDatabase::class.java).apply {
                                 startActivity(this)
                                 finish()
                             }

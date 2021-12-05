@@ -1,9 +1,14 @@
 package com.example.a19012021091_assignment2_mad
 
+import android.app.Dialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ListView
+import android.widget.Toast
+import androidx.appcompat.widget.AppCompatButton
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
@@ -16,9 +21,12 @@ class RecordsDatabase : AppCompatActivity() {
 
     private val bills = FirebaseFirestore.getInstance().collection("bills")
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.records_database)
+
+        var btn_create_invoice = findViewById<FloatingActionButton>(R.id.btn_create_invoice)
 
 
         CoroutineScope(Dispatchers.Main).launch {
@@ -52,6 +60,40 @@ class RecordsDatabase : AppCompatActivity() {
                     startActivity(this)
                 }
             }
+        }
+
+        btn_create_invoice.setOnClickListener {
+
+            val dialog = Dialog(this)
+            dialog.setContentView(R.layout.customer_details_dialog)
+
+            val customer_name = dialog.findViewById<TextInputEditText>(R.id.customer_name)
+            val customer_phone = dialog.findViewById<TextInputEditText>(R.id.customer_number)
+
+            val next_btn = dialog.findViewById<AppCompatButton>(R.id.next_btn)
+
+            next_btn.setOnClickListener {
+                if (customer_name.text.toString().isEmpty() or customer_phone.text.toString()
+                        .isEmpty()
+                ) {
+                    Toast.makeText(
+                        this,
+                        "Please enter all fields\nAll fields are required",
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                } else {
+                    Intent(this, BillDeatils::class.java).apply {
+                        putExtra("name", customer_name.text.toString())
+                        putExtra("phone", customer_phone.text.toString())
+                        startActivity(this)
+                    }
+
+
+                }
+            }
+            dialog.show()
+
         }
 
 

@@ -90,7 +90,7 @@ class BillDeatils : AppCompatActivity() {
                 ).show()
             } else {
 
-                val timeFormat = SimpleDateFormat("MMM, dd yyyy hh:mm:ss a", Locale.ENGLISH)
+                val timeFormat = SimpleDateFormat("MMM, dd yyyy ", Locale.ENGLISH)
                 val timeStamp = timeFormat.format(System.currentTimeMillis())
 
                 val id = bills.document().id
