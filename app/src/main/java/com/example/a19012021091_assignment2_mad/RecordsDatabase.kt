@@ -83,10 +83,23 @@ class RecordsDatabase : AppCompatActivity() {
                     ).show()
 
                 } else {
-                    Intent(this, BillDeatils::class.java).apply {
-                        putExtra("name", customer_name.text.toString())
-                        putExtra("phone", customer_phone.text.toString())
-                        startActivity(this)
+
+                    if ((customer_phone.text.toString()).length != 10) {
+                        Toast.makeText(
+                            this,
+                            "Please enter valid Phone number",
+                            Toast.LENGTH_SHORT
+                        ).show()
+
+                    } else {
+                        Intent(this, BillDeatils::class.java).apply {
+                            putExtra("name", customer_name.text.toString())
+                            putExtra("phone", customer_phone.text.toString())
+                            startActivity(this)
+
+                        }
+
+
                     }
 
 
