@@ -248,12 +248,16 @@ class InvoiceCreate : AppCompatActivity() {
 
             }
             R.id.additem_menu -> {
-                Toast.makeText(applicationContext, "click on additem", Toast.LENGTH_LONG).show()
+//                Intent(this,BillDeatils::class.java).apply {
+////                    putExtra("id_bill",id_bill)
+//                    startActivity(this)
+//                }
                 return true
             }
             R.id.call_menu -> {
                 Intent(ACTION_DIAL).setData(Uri.parse("tel:" + customerPhone))
                     .apply {
+
                         startActivity(this)
                     }
                 return true

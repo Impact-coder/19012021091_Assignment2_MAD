@@ -3,8 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/5th Sem/CP-1/19012021091_Assignment2_MAD/app/src/main/res/drawable/animation.xml" value="0.16623931623931623" />
         <entry key="..\:/5th Sem/CP-1/19012021091_Assignment2_MAD/app/src/main/res/drawable/btn_gradient.xml" value="0.20260416666666667" />
+        <entry key="..\:/5th Sem/CP-1/19012021091_Assignment2_MAD/app/src/main/res/drawable/splash_gradient.xml" value="0.20260416666666667" />
         <entry key="..\:/5th Sem/CP-1/19012021091_Assignment2_MAD/app/src/main/res/drawable/unpaid_gradient.xml" value="0.20260416666666667" />
+        <entry key="..\:/5th Sem/CP-1/19012021091_Assignment2_MAD/app/src/main/res/layout/activity_splash.xml" value="0.18645833333333334" />
+        <entry key="..\:/5th Sem/CP-1/19012021091_Assignment2_MAD/app/src/main/res/layout/dashboard.xml" value="0.152991452991453" />
         <entry key="..\:/5th Sem/CP-1/19012021091_Assignment2_MAD/app/src/main/res/layout/invoice_create.xml" value="0.33" />
         <entry key="..\:/5th Sem/CP-1/19012021091_Assignment2_MAD/app/src/main/res/layout/list_item_records.xml" value="0.18645833333333334" />
         <entry key="..\:/5th Sem/CP-1/19012021091_Assignment2_MAD/app/src/main/res/layout/records_database.xml" value="0.33" />
