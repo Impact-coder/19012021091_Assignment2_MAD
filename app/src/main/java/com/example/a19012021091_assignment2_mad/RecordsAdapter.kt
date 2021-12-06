@@ -6,8 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.RequiresApi
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat
 
 class RecordsAdapter(var context: Context, var recordsList: ArrayList<BillData>) : BaseAdapter() {
 
@@ -32,6 +35,18 @@ class RecordsAdapter(var context: Context, var recordsList: ArrayList<BillData>)
         val customerNumber = view.findViewById<TextView>(R.id.tv_number)
         val billTotal = view.findViewById<TextView>(R.id.tv_bill_total)
         val timeFormat = view.findViewById<TextView>(R.id.tv_date)
+        val color_change = view.findViewById<LinearLayout>(R.id.main_liner)
+
+
+        if (recordsList[position].ispaid)
+        {
+            color_change.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.btn_gradient))
+        }
+        else
+        {
+            color_change.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.unpaid_gradient))
+        }
+
 
         customerName.text = recordsList[position].customerName
         customerNumber.text = recordsList[position].customerPhone

@@ -10,5 +10,6 @@ data class BillData(
     val totalPrice: Float = 0f,
     val date: String = "",
     val customerName: String = "",
-    val customerPhone: String = ""
+    val customerPhone: String = "",
+    val ispaid:Boolean = false
 )

@@ -7,17 +7,25 @@
     android:layout_height="match_parent"
     tools:context=".InvoiceCreate">
 
-    <ImageView
-        android:id="@+id/waveform1"
-        android:layout_width="wrap_content"
-        android:layout_height="200dp"
-        app:layout_constraintEnd_toEndOf="parent"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-
-        android:src="@drawable/waveform"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="-20dp"
-        />
+       >
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:title="Invoice Create"
+            app:titleTextColor="@color/white"
+            />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
 
 
     <ScrollView
@@ -26,7 +34,7 @@
         android:layout_marginTop="85dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/waveform1">
+        app:layout_constraintTop_toBottomOf="@id/appbar1">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout

@@ -3,6 +3,7 @@ package com.example.a19012021091_assignment2_mad
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.Intent.ACTION_DIAL
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.telephony.PhoneNumberUtils
@@ -23,22 +24,31 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import android.content.pm.PackageInfo
 import android.net.Uri
+import android.view.Menu
+import android.view.MenuItem
 
 
 class InvoiceCreate : AppCompatActivity() {
 
-    private var etPhoneNo = ""
-    private var etMessage = ""
     private lateinit var btnSendMsg: AppCompatButton
     private val users = FirebaseFirestore.getInstance().collection("users")
+    private val bills = FirebaseFirestore.getInstance().collection("bills")
 
-    var msg: String = ""
+    var id_bill:String =""
+
+    var msgReminder: String = ""
+    var msgBill: String = ""
+
     var customerPhone = ""
+    var date:String =""
+    var msg_array = ArrayList<String>()
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.invoice_create)
+        val t = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)
+        setSupportActionBar(t)
 
 
         var btn_back_to_store = findViewById<AppCompatButton>(R.id.btn_back_to_home)
@@ -56,6 +66,9 @@ class InvoiceCreate : AppCompatActivity() {
         val rates = intent.getFloatArrayExtra("rates")!!
         val taxes = intent.getFloatArrayExtra("taxes")!!
         customerPhone = intent.getStringExtra("cst_num")!!
+         date = intent.getStringExtra("date_of_invoice")!!
+        id_bill = intent.getStringExtra("id_bill")!!
+
 
 
         val adapter =
@@ -91,10 +104,16 @@ class InvoiceCreate : AppCompatActivity() {
         for (i in 0..items.size - 1) {
 
             val r = rates[i] * quantities[i]
-
             val t1 = r / 100 * taxes[i]
 
-            data += "\n${items[i]} ${rates[i]} ${t1} ${r + t1}"
+
+            data += "\n\nItem ${i+1}" +
+                    "\nName: ${items[i]}" +
+                    "\nQty: ${quantities[i]}" +
+                    "\nRate: ${rates[i]}" +
+                    "\nGST%: ${taxes[i]} %"+
+                    "\nTax Amount: ₹${t1}" +
+                    "\nTotal: ₹${r + t1}"
         }
 
 
@@ -104,22 +123,30 @@ class InvoiceCreate : AppCompatActivity() {
                 .toObject(User::class.java)!!
             val companyName = user.businessName
             val companyNumber = user.contactNumber
-
-            msg = "$companyName \n $companyNumber" +
-                    "\nName Rate TAX Total" +
+            msgBill = "$companyName\n$companyNumber" +
                     "$data" +
-                    "\nTotal Amount: ${amount + tax}"
+                    "\n\nTotal Amount: ${amount + tax}"
+
+
+
+
+            msgReminder = "$companyName\n$companyNumber" + "\nYou have pending Bill of ₹${amount + tax} of the purchases you made on " +
+                    "$date\nSo kindly pay the bill within two days."
+
+
 
             btn_send_sms.setOnClickListener {
                 Toast.makeText(applicationContext, customerPhone, Toast.LENGTH_SHORT).show()
-                permissionCheck()
+                permissionCheck(msgBill)
+
             }
         }
 
 
     }
 
-    private fun permissionCheck() {
+    private fun permissionCheck(msg_permission:String) {
+
         val permissionCheck = ContextCompat.checkSelfPermission(
             this,
             Manifest.permission.SEND_SMS
@@ -131,7 +158,7 @@ class InvoiceCreate : AppCompatActivity() {
                     Manifest.permission.READ_PHONE_STATE
                 )
             if (permissionCheck1 == PackageManager.PERMISSION_GRANTED) {
-                sendMessage()
+                sendMessage(msg_permission)
             } else {
                 ActivityCompat.requestPermissions(
                     this, arrayOf(Manifest.permission.READ_PHONE_STATE),
@@ -146,16 +173,18 @@ class InvoiceCreate : AppCompatActivity() {
         }
     }
 
-    private fun sendMessage() {
+    private fun sendMessage(msg:String) {
 
         if (customerPhone == "" || msg == "") {
             Toast.makeText(this, "Field cannot be empty", Toast.LENGTH_SHORT).show()
         } else {
             if (PhoneNumberUtils.isGlobalPhoneNumber(customerPhone)) {
                 val smsManager: SmsManager = SmsManager.getDefault()
+                msg_array = smsManager.divideMessage(msg)
                 Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
-                smsManager.sendTextMessage(customerPhone.trim(), null, msg, null, null)
+                smsManager.sendMultipartTextMessage(customerPhone.trim(), null, msg_array, null, null)
                 Toast.makeText(this, "Message Sent", Toast.LENGTH_SHORT).show()
+
 
             } else {
                 Toast.makeText(
@@ -170,12 +199,13 @@ class InvoiceCreate : AppCompatActivity() {
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
-        grantResults: IntArray
+        grantResults: IntArray,
+
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == PERMISSION_REQUEST_SEND_SMS) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                sendMessage()
+//                sendMessage(msg_req)
             } else {
                 Toast.makeText(
                     this, "You don't have required permission to send a message",
@@ -184,12 +214,53 @@ class InvoiceCreate : AppCompatActivity() {
             }
         } else if (requestCode == PERMISSION_REQUEST_READ_PHONE_STATE) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                sendMessage()
+//                sendMessage(msg_req)
             } else {
                 Toast.makeText(
                     this, "You don't have required permission to send a message",
                     Toast.LENGTH_SHORT
                 ).show()
+            }
+        }
+    }
+
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        menuInflater.inflate(R.menu.top_app_bar, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.mark_as_paid_menu -> {
+                CoroutineScope(Dispatchers.Main).launch {
+                    bills.document(id_bill).update("ispaid",true).await()
+
+                }
+
+                Intent(this,RecordsDatabase::class.java).apply {
+                    startActivity(this)
+                }
+
+                return true
+
+
+            }
+            R.id.additem_menu -> {
+                Toast.makeText(applicationContext, "click on additem", Toast.LENGTH_LONG).show()
+                return true
+            }
+            R.id.call_menu -> {
+                Intent(ACTION_DIAL).setData(Uri.parse("tel:" + customerPhone))
+                    .apply {
+                        startActivity(this)
+                    }
+                return true
+            }
+            else -> {
+                permissionCheck(msgReminder)
+                return true
             }
         }
     }

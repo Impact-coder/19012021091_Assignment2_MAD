@@ -4,6 +4,7 @@
     android:id="@+id/parent_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+
     android:paddingLeft="20dp"
     android:paddingTop="10dp"
     android:paddingRight="20dp">
@@ -18,6 +19,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
+            android:id="@+id/main_liner"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/btn_gradient"

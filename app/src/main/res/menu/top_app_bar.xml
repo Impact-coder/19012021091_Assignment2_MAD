@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/mark_as_paid_menu"
+        android:title="Mark as Paid" />
     <item
         android:id="@+id/additem_menu"
         android:title="Add More Item" />
 
     <item
-        android:id="@+id/save_as_pdf_menu"
-        android:title="Save as PDF"
+        android:id="@+id/call_menu"
+        android:title="call"
 
         />
 
     <item
-        android:id="@+id/send_to_cuatomer_menu"
-        android:title="Send to Customer" />
+        android:id="@+id/send_reminder_menu"
+        android:title="Send Reminder" />
 
-    <item
-        android:id="@+id/goto_dashboard_menu"
-        android:title="Go to DashBoard" />
+
 
 
 </menu>
