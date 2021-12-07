@@ -64,10 +64,7 @@ class Signup : AppCompatActivity() {
             if (signup_name.length() == 0 || signup_phone_no.length() == 0 || signup_add.length() == 0 || signup_email.length() == 0 || signup_password.length() == 0) {
                 Toast.makeText(this, "Any field can't be empty!!", Toast.LENGTH_SHORT).show()
             } else if (signup_confrim_password.text.toString() != signup_password.text.toString()) {
-                signup_name.setText("")
-                signup_phone_no.setText("")
-                signup_add.setText("")
-                signup_email.setText("")
+
                 signup_password.setText("")
                 signup_confrim_password.setText("")
                 Toast.makeText(

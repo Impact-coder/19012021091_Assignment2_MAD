@@ -26,6 +26,7 @@ import android.content.pm.PackageInfo
 import android.net.Uri
 import android.view.Menu
 import android.view.MenuItem
+import com.google.firebase.firestore.FieldValue
 
 
 class InvoiceCreate : AppCompatActivity() {
@@ -40,6 +41,7 @@ class InvoiceCreate : AppCompatActivity() {
     var msgBill: String = ""
 
     var customerPhone = ""
+    val customerName = ""
     var date:String =""
     var msg_array = ArrayList<String>()
 
@@ -121,6 +123,8 @@ class InvoiceCreate : AppCompatActivity() {
         CoroutineScope(Dispatchers.Main).launch {
             val user = users.document(Firebase.auth.currentUser!!.uid).get().await()
                 .toObject(User::class.java)!!
+
+
             val companyName = user.businessName
             val companyNumber = user.contactNumber
             msgBill = "$companyName\n$companyNumber" +
@@ -232,28 +236,34 @@ class InvoiceCreate : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
+        when (item.itemId) {
             R.id.mark_as_paid_menu -> {
+                Toast.makeText(this, id_bill, Toast.LENGTH_SHORT).show()
                 CoroutineScope(Dispatchers.Main).launch {
-                    bills.document(id_bill).update("ispaid",true).await()
+                    bills.document(id_bill).update("paid","paid").await()
+                    Intent(applicationContext,RecordsDatabase::class.java).apply {
+                        startActivity(this)
+                    }
 
-                }
-
-                Intent(this,RecordsDatabase::class.java).apply {
-                    startActivity(this)
                 }
 
                 return true
 
+            }
+            R.id.mark_as_unpaid_menu -> {
+                Toast.makeText(this, id_bill, Toast.LENGTH_SHORT).show()
+                CoroutineScope(Dispatchers.Main).launch {
+                    bills.document(id_bill).update("paid","notPaid").await()
+                    Intent(applicationContext,RecordsDatabase::class.java).apply {
+                        startActivity(this)
+                    }
+
+                }
+
+                return true
 
             }
-            R.id.additem_menu -> {
-//                Intent(this,BillDeatils::class.java).apply {
-////                    putExtra("id_bill",id_bill)
-//                    startActivity(this)
-//                }
-                return true
-            }
+
             R.id.call_menu -> {
                 Intent(ACTION_DIAL).setData(Uri.parse("tel:" + customerPhone))
                     .apply {

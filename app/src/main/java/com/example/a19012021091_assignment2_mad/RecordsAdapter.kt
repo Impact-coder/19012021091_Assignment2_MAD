@@ -9,7 +9,6 @@ import android.widget.BaseAdapter
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.RequiresApi
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 
 class RecordsAdapter(var context: Context, var recordsList: ArrayList<BillData>) : BaseAdapter() {
@@ -35,16 +34,28 @@ class RecordsAdapter(var context: Context, var recordsList: ArrayList<BillData>)
         val customerNumber = view.findViewById<TextView>(R.id.tv_number)
         val billTotal = view.findViewById<TextView>(R.id.tv_bill_total)
         val timeFormat = view.findViewById<TextView>(R.id.tv_date)
-        val color_change = view.findViewById<LinearLayout>(R.id.main_liner)
+        val layout_background = view.findViewById<LinearLayout>(R.id.main_liner)
 
 
-        if (recordsList[position].ispaid)
+        if (recordsList[position].paid == "paid")
         {
-            color_change.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.btn_gradient))
+
+            layout_background.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.btn_gradient) );
+//            color_change.background.setTint(
+//                color_change.context.resources.getColor(
+//                    R.color.black, null
+//                )
+//            )
         }
         else
         {
-            color_change.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.unpaid_gradient))
+            layout_background.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.unpaid_gradient) );
+//
+//            layout.background.setTint(
+//                layout.context.resources.getColor(
+//                    R.color.white, null
+//                )
+//            )
         }
 
 

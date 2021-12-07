@@ -59,7 +59,7 @@ class RecordsDatabase : AppCompatActivity() {
                     putExtra("taxes", tax1)
                     putExtra("cst_num",item.customerPhone)
                     putExtra("date_of_invoice",item.date)
-                    putExtra("id_bill",bills.id)
+                    putExtra("id_bill",item.uid)
                     startActivity(this)
                 }
             }

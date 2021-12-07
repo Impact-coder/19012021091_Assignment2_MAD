@@ -4,16 +4,16 @@
     <item
         android:id="@+id/mark_as_paid_menu"
         android:title="Mark as Paid" />
+
     <item
-        android:id="@+id/additem_menu"
-        android:title="Add More Item" />
+        android:id="@+id/mark_as_unpaid_menu"
+        android:title="Mark as UnPaid" />
 
     <item
         android:id="@+id/call_menu"
         android:title="call"
 
         />
-
     <item
         android:id="@+id/send_reminder_menu"
         android:title="Send Reminder" />

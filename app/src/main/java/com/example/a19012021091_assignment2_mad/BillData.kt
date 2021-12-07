@@ -11,5 +11,5 @@ data class BillData(
     val date: String = "",
     val customerName: String = "",
     val customerPhone: String = "",
-    val ispaid:Boolean = false
+    val paid:String = "notPaid"
 )

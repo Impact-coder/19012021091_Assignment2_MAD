@@ -35,7 +35,6 @@ class BillDeatils : AppCompatActivity() {
         val taxes: ArrayList<Float> = arrayListOf()
         val customerName = intent.getStringExtra("name")!!
         val customerPhone = intent.getStringExtra("phone")!!
-//        val item_id = intent.getStringExtra("id_bill")!!
         var total = 0f
 
         val item_name = findViewById<TextInputEditText>(R.id.item_name)
