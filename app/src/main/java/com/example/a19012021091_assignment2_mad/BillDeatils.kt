@@ -132,6 +132,7 @@ class BillDeatils : AppCompatActivity() {
                     putExtra("cst_num",customerPhone)
                     putExtra("date_of_invoice",timeStamp)
                     putExtra("id_bill",id)
+                    putExtra("cst_name",customerName)
                     startActivity(this)
                 }
             }

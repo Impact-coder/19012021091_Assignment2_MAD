@@ -60,6 +60,7 @@ class RecordsDatabase : AppCompatActivity() {
                     putExtra("cst_num",item.customerPhone)
                     putExtra("date_of_invoice",item.date)
                     putExtra("id_bill",item.uid)
+                    putExtra("cst_name",item.customerName)
                     startActivity(this)
                 }
             }

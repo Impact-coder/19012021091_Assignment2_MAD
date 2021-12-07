@@ -26,6 +26,7 @@ import android.content.pm.PackageInfo
 import android.net.Uri
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.widget.Toolbar
 import com.google.firebase.firestore.FieldValue
 
 
@@ -35,14 +36,15 @@ class InvoiceCreate : AppCompatActivity() {
     private val users = FirebaseFirestore.getInstance().collection("users")
     private val bills = FirebaseFirestore.getInstance().collection("bills")
 
-    var id_bill:String =""
+    var id_bill: String = ""
+    var token_of_msg = ""
 
     var msgReminder: String = ""
     var msgBill: String = ""
 
     var customerPhone = ""
-    val customerName = ""
-    var date:String =""
+    var CustomerName:String = ""
+    var date: String = ""
     var msg_array = ArrayList<String>()
 
     @SuppressLint("SetTextI18n")
@@ -55,9 +57,11 @@ class InvoiceCreate : AppCompatActivity() {
 
         var btn_back_to_store = findViewById<AppCompatButton>(R.id.btn_back_to_home)
         var btn_send_sms = findViewById<AppCompatButton>(R.id.btn_send_sms)
+        val title_customer_name = findViewById<Toolbar>(R.id.toolbar)
 
 
-        btn_back_to_store.setOnClickListener {
+
+            btn_back_to_store.setOnClickListener {
             Intent(this, RecordsDatabase::class.java).apply {
                 startActivity(this)
             }
@@ -67,10 +71,13 @@ class InvoiceCreate : AppCompatActivity() {
         val quantities = intent.getIntegerArrayListExtra("quantities")!!
         val rates = intent.getFloatArrayExtra("rates")!!
         val taxes = intent.getFloatArrayExtra("taxes")!!
-        customerPhone = intent.getStringExtra("cst_num")!!
-         date = intent.getStringExtra("date_of_invoice")!!
-        id_bill = intent.getStringExtra("id_bill")!!
 
+        customerPhone = intent.getStringExtra("cst_num")!!
+        date = intent.getStringExtra("date_of_invoice")!!
+        id_bill = intent.getStringExtra("id_bill")!!
+        CustomerName = intent.getStringExtra("cst_name")!!
+
+        title_customer_name.title = CustomerName
 
 
         val adapter =
@@ -109,11 +116,11 @@ class InvoiceCreate : AppCompatActivity() {
             val t1 = r / 100 * taxes[i]
 
 
-            data += "\n\nItem ${i+1}" +
+            data += "\n\nItem ${i + 1}" +
                     "\nName: ${items[i]}" +
                     "\nQty: ${quantities[i]}" +
                     "\nRate: ${rates[i]}" +
-                    "\nGST%: ${taxes[i]} %"+
+                    "\nGST%: ${taxes[i]} %" +
                     "\nTax Amount: ₹${t1}" +
                     "\nTotal: ₹${r + t1}"
         }
@@ -134,13 +141,15 @@ class InvoiceCreate : AppCompatActivity() {
 
 
 
-            msgReminder = "$companyName\n$companyNumber" + "\nYou have pending Bill of ₹${amount + tax} of the purchases you made on " +
-                    "$date\nSo kindly pay the bill within two days."
+            msgReminder =
+                "$companyName\n$companyNumber" + "\nYou have pending Bill of ₹${amount + tax} of the purchases you made on " +
+                        "$date\nSo kindly pay the bill within two days."
 
 
 
             btn_send_sms.setOnClickListener {
-                Toast.makeText(applicationContext, customerPhone, Toast.LENGTH_SHORT).show()
+
+                token_of_msg = msgBill
                 permissionCheck(msgBill)
 
             }
@@ -149,7 +158,7 @@ class InvoiceCreate : AppCompatActivity() {
 
     }
 
-    private fun permissionCheck(msg_permission:String) {
+    private fun permissionCheck(msg_permission: String) {
 
         val permissionCheck = ContextCompat.checkSelfPermission(
             this,
@@ -177,7 +186,7 @@ class InvoiceCreate : AppCompatActivity() {
         }
     }
 
-    private fun sendMessage(msg:String) {
+    private fun sendMessage(msg: String) {
 
         if (customerPhone == "" || msg == "") {
             Toast.makeText(this, "Field cannot be empty", Toast.LENGTH_SHORT).show()
@@ -186,7 +195,13 @@ class InvoiceCreate : AppCompatActivity() {
                 val smsManager: SmsManager = SmsManager.getDefault()
                 msg_array = smsManager.divideMessage(msg)
                 Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
-                smsManager.sendMultipartTextMessage(customerPhone.trim(), null, msg_array, null, null)
+                smsManager.sendMultipartTextMessage(
+                    customerPhone.trim(),
+                    null,
+                    msg_array,
+                    null,
+                    null
+                )
                 Toast.makeText(this, "Message Sent", Toast.LENGTH_SHORT).show()
 
 
@@ -205,11 +220,11 @@ class InvoiceCreate : AppCompatActivity() {
         permissions: Array<out String>,
         grantResults: IntArray,
 
-    ) {
+        ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == PERMISSION_REQUEST_SEND_SMS) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-//                sendMessage(msg_req)
+                sendMessage(token_of_msg)
             } else {
                 Toast.makeText(
                     this, "You don't have required permission to send a message",
@@ -218,7 +233,7 @@ class InvoiceCreate : AppCompatActivity() {
             }
         } else if (requestCode == PERMISSION_REQUEST_READ_PHONE_STATE) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-//                sendMessage(msg_req)
+                sendMessage(token_of_msg)
             } else {
                 Toast.makeText(
                     this, "You don't have required permission to send a message",
@@ -240,8 +255,8 @@ class InvoiceCreate : AppCompatActivity() {
             R.id.mark_as_paid_menu -> {
                 Toast.makeText(this, id_bill, Toast.LENGTH_SHORT).show()
                 CoroutineScope(Dispatchers.Main).launch {
-                    bills.document(id_bill).update("paid","paid").await()
-                    Intent(applicationContext,RecordsDatabase::class.java).apply {
+                    bills.document(id_bill).update("paid", "paid").await()
+                    Intent(applicationContext, RecordsDatabase::class.java).apply {
                         startActivity(this)
                     }
 
@@ -253,8 +268,8 @@ class InvoiceCreate : AppCompatActivity() {
             R.id.mark_as_unpaid_menu -> {
                 Toast.makeText(this, id_bill, Toast.LENGTH_SHORT).show()
                 CoroutineScope(Dispatchers.Main).launch {
-                    bills.document(id_bill).update("paid","notPaid").await()
-                    Intent(applicationContext,RecordsDatabase::class.java).apply {
+                    bills.document(id_bill).update("paid", "notPaid").await()
+                    Intent(applicationContext, RecordsDatabase::class.java).apply {
                         startActivity(this)
                     }
 
@@ -273,6 +288,7 @@ class InvoiceCreate : AppCompatActivity() {
                 return true
             }
             else -> {
+                token_of_msg = msgReminder
                 permissionCheck(msgReminder)
                 return true
             }
