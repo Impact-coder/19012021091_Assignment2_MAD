@@ -5,13 +5,29 @@
       <map>
         <entry key="..\:/5th Sem/CP-1/19012021091_Assignment2_MAD/app/src/main/res/drawable/animation.xml" value="0.16623931623931623" />
         <entry key="..\:/5th Sem/CP-1/19012021091_Assignment2_MAD/app/src/main/res/drawable/btn_gradient.xml" value="0.20260416666666667" />
+        <entry key="..\:/5th Sem/CP-1/19012021091_Assignment2_MAD/app/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.16623931623931623" />
+        <entry key="..\:/5th Sem/CP-1/19012021091_Assignment2_MAD/app/src/main/res/drawable/ic_baseline_business_24.xml" value="0.1" />
+        <entry key="..\:/5th Sem/CP-1/19012021091_Assignment2_MAD/app/src/main/res/drawable/ic_baseline_business_name_24.xml" value="0.16623931623931623" />
+        <entry key="..\:/5th Sem/CP-1/19012021091_Assignment2_MAD/app/src/main/res/drawable/ic_baseline_currency_rupee_24.xml" value="0.1" />
+        <entry key="..\:/5th Sem/CP-1/19012021091_Assignment2_MAD/app/src/main/res/drawable/ic_baseline_vpn_key_24.xml" value="0.16623931623931623" />
+        <entry key="..\:/5th Sem/CP-1/19012021091_Assignment2_MAD/app/src/main/res/drawable/ic_invoice_history_24.xml" value="0.16623931623931623" />
+        <entry key="..\:/5th Sem/CP-1/19012021091_Assignment2_MAD/app/src/main/res/drawable/ic_outline_circle_24.xml" value="0.16623931623931623" />
+        <entry key="..\:/5th Sem/CP-1/19012021091_Assignment2_MAD/app/src/main/res/drawable/ic_outline_invoice_24.xml" value="0.16623931623931623" />
+        <entry key="..\:/5th Sem/CP-1/19012021091_Assignment2_MAD/app/src/main/res/drawable/ic_twotone_circle_24.xml" value="0.16623931623931623" />
+        <entry key="..\:/5th Sem/CP-1/19012021091_Assignment2_MAD/app/src/main/res/drawable/ic_wave1.xml" value="0.16623931623931623" />
+        <entry key="..\:/5th Sem/CP-1/19012021091_Assignment2_MAD/app/src/main/res/drawable/profile_gradient.xml" value="0.16623931623931623" />
         <entry key="..\:/5th Sem/CP-1/19012021091_Assignment2_MAD/app/src/main/res/drawable/splash_gradient.xml" value="0.20260416666666667" />
         <entry key="..\:/5th Sem/CP-1/19012021091_Assignment2_MAD/app/src/main/res/drawable/unpaid_gradient.xml" value="0.20260416666666667" />
+        <entry key="..\:/5th Sem/CP-1/19012021091_Assignment2_MAD/app/src/main/res/drawable/waveform.xml" value="0.16623931623931623" />
         <entry key="..\:/5th Sem/CP-1/19012021091_Assignment2_MAD/app/src/main/res/layout/activity_splash.xml" value="0.18645833333333334" />
+        <entry key="..\:/5th Sem/CP-1/19012021091_Assignment2_MAD/app/src/main/res/layout/customer_details_dialog.xml" value="0.152991452991453" />
         <entry key="..\:/5th Sem/CP-1/19012021091_Assignment2_MAD/app/src/main/res/layout/dashboard.xml" value="0.152991452991453" />
-        <entry key="..\:/5th Sem/CP-1/19012021091_Assignment2_MAD/app/src/main/res/layout/invoice_create.xml" value="0.33" />
+        <entry key="..\:/5th Sem/CP-1/19012021091_Assignment2_MAD/app/src/main/res/layout/dropdown_taxitem.xml" value="0.152991452991453" />
+        <entry key="..\:/5th Sem/CP-1/19012021091_Assignment2_MAD/app/src/main/res/layout/invoice_create.xml" value="0.22" />
+        <entry key="..\:/5th Sem/CP-1/19012021091_Assignment2_MAD/app/src/main/res/layout/invoice_item_layout.xml" value="0.25" />
         <entry key="..\:/5th Sem/CP-1/19012021091_Assignment2_MAD/app/src/main/res/layout/list_item_records.xml" value="0.18645833333333334" />
         <entry key="..\:/5th Sem/CP-1/19012021091_Assignment2_MAD/app/src/main/res/layout/records_database.xml" value="0.33" />
+        <entry key="..\:/5th Sem/CP-1/19012021091_Assignment2_MAD/app/src/main/res/layout/signup.xml" value="0.152991452991453" />
         <entry key="..\:/5th Sem/CP-1/19012021091_Assignment2_MAD/app/src/main/res/menu/top_app_bar.xml" value="0.18645833333333334" />
         <entry key="..\:/5th Sem/MAD_LAB/19012021091_Assignment2_MAD/app/src/main/res/drawable/btn_gradient.xml" value="0.16623931623931623" />
         <entry key="..\:/5th Sem/MAD_LAB/19012021091_Assignment2_MAD/app/src/main/res/drawable/cardview_style.xml" value="0.16623931623931623" />

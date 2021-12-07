@@ -41,21 +41,12 @@ class RecordsAdapter(var context: Context, var recordsList: ArrayList<BillData>)
         {
 
             layout_background.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.btn_gradient) );
-//            color_change.background.setTint(
-//                color_change.context.resources.getColor(
-//                    R.color.black, null
-//                )
-//            )
+
         }
         else
         {
             layout_background.setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.unpaid_gradient) );
-//
-//            layout.background.setTint(
-//                layout.context.resources.getColor(
-//                    R.color.white, null
-//                )
-//            )
+
         }
 
 

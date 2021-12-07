@@ -93,7 +93,7 @@ class RecordsDatabase : AppCompatActivity() {
                     if ((customer_phone.text.toString()).length != 10) {
                         Toast.makeText(
                             this,
-                            "Please enter valid Phone number",
+                            "Please enter valid Phone Number",
                             Toast.LENGTH_SHORT
                         ).show()
 

@@ -24,9 +24,11 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.tasks.await
 import android.content.pm.PackageInfo
 import android.net.Uri
+import android.os.Handler
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.widget.Toolbar
+import com.airbnb.lottie.LottieAnimationView
 import com.google.firebase.firestore.FieldValue
 
 
@@ -46,18 +48,21 @@ class InvoiceCreate : AppCompatActivity() {
     var CustomerName:String = ""
     var date: String = ""
     var msg_array = ArrayList<String>()
+    lateinit var anim:LottieAnimationView
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.invoice_create)
-        val t = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)
-        setSupportActionBar(t)
+        val title_customer_name = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(title_customer_name)
 
 
         var btn_back_to_store = findViewById<AppCompatButton>(R.id.btn_back_to_home)
         var btn_send_sms = findViewById<AppCompatButton>(R.id.btn_send_sms)
-        val title_customer_name = findViewById<Toolbar>(R.id.toolbar)
+
+        anim= findViewById<LottieAnimationView>(R.id.animationView)
+        anim.setAnimation("anim.json")
 
 
 
@@ -78,7 +83,6 @@ class InvoiceCreate : AppCompatActivity() {
         CustomerName = intent.getStringExtra("cst_name")!!
 
         title_customer_name.title = CustomerName
-
 
         val adapter =
             InvoiceAdapter(
@@ -138,13 +142,9 @@ class InvoiceCreate : AppCompatActivity() {
                     "$data" +
                     "\n\nTotal Amount: ${amount + tax}"
 
-
-
-
             msgReminder =
                 "$companyName\n$companyNumber" + "\nYou have pending Bill of ₹${amount + tax} of the purchases you made on " +
                         "$date\nSo kindly pay the bill within two days."
-
 
 
             btn_send_sms.setOnClickListener {
@@ -194,7 +194,6 @@ class InvoiceCreate : AppCompatActivity() {
             if (PhoneNumberUtils.isGlobalPhoneNumber(customerPhone)) {
                 val smsManager: SmsManager = SmsManager.getDefault()
                 msg_array = smsManager.divideMessage(msg)
-                Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
                 smsManager.sendMultipartTextMessage(
                     customerPhone.trim(),
                     null,
@@ -202,7 +201,14 @@ class InvoiceCreate : AppCompatActivity() {
                     null,
                     null
                 )
-                Toast.makeText(this, "Message Sent", Toast.LENGTH_SHORT).show()
+
+                anim.alpha=1f
+                anim.playAnimation()
+                Handler().postDelayed({
+                    anim.cancelAnimation()
+                    anim.alpha=0f
+                }, 3500)
+//                Toast.makeText(this, "Message Sent", Toast.LENGTH_SHORT).show()
 
 
             } else {
@@ -294,6 +300,7 @@ class InvoiceCreate : AppCompatActivity() {
             }
         }
     }
+
 
 
 }

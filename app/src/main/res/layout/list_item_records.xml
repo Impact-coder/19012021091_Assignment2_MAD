@@ -22,7 +22,7 @@
             android:id="@+id/main_liner"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/design_default_color_primary"
+            android:background="@drawable/btn_gradient"
             android:paddingBottom="10dp"
             android:paddingTop="10dp"
             android:orientation="horizontal">
