@@ -32,3 +32,26 @@ https://drive.google.com/file/d/1t0OGhSJefqdEHvYL1W6JU5hhoiE4QAlD/view?usp=shari
 2. Used Confetti View Dependencies for Animation.
 
 3. Used coroutines for background processes.
+
+## Screenshots
+
+![alternatetext](https://firebasestorage.googleapis.com/v0/b/invoice-generator-7fdde.appspot.com/o/o1.jpeg?alt=media&token=0b406f45-818b-456d-985a-07dcd364c47e)
+
+![alternatetext](https://firebasestorage.googleapis.com/v0/b/invoice-generator-7fdde.appspot.com/o/o2.jpeg?alt=media&token=6e8463cb-5d24-47bb-8a8a-5f40a470bb34)
+
+![alternatetext](https://firebasestorage.googleapis.com/v0/b/invoice-generator-7fdde.appspot.com/o/o3.jpeg?alt=media&token=933b483b-0023-4e26-a91f-b0cfe1097c30)
+
+![alternatetext](https://firebasestorage.googleapis.com/v0/b/invoice-generator-7fdde.appspot.com/o/o4.jpeg?alt=media&token=ae6a5e32-0047-445b-a7ae-c8f7ff008148)
+
+![alternatetext](https://firebasestorage.googleapis.com/v0/b/invoice-generator-7fdde.appspot.com/o/o5.jpeg?alt=media&token=4d69ef4e-0660-4d1c-8b75-c2e1b270ba9b)
+
+![alternatetext](https://firebasestorage.googleapis.com/v0/b/invoice-generator-7fdde.appspot.com/o/o6.jpeg?alt=media&token=8cd19215-f4fa-4797-9ecc-d2091b5d578b)
+
+![alternatetext](https://firebasestorage.googleapis.com/v0/b/invoice-generator-7fdde.appspot.com/o/o7.jpeg?alt=media&token=120d1315-cfd3-4fe4-88c9-7cf3ec70c4b9)
+
+![alternatetext](https://firebasestorage.googleapis.com/v0/b/invoice-generator-7fdde.appspot.com/o/o8.jpeg?alt=media&token=22a381ae-8bb1-4310-b0ac-ba74d304ef89)
+
+![alternatetext](https://firebasestorage.googleapis.com/v0/b/invoice-generator-7fdde.appspot.com/o/InkedWhatsApp%20Image%202021-12-08%20at%2012.28.51%20AM_LI.jpg?alt=media&token=68361067-517b-4190-bcb6-4538b7e83dc1)
+
+![alternatetext](https://firebasestorage.googleapis.com/v0/b/invoice-generator-7fdde.appspot.com/o/o9.jpeg?alt=media&token=ef76352f-7db9-4990-b0ae-335b33110a5b)
+
